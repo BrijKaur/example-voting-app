@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Push result image') {
          steps {
-       withDockerRegistry(credentialsId: 'login', url: "https://https://registry.hub.docker.com/") {
+       withDockerRegistry(credentialsId: 'login', url:'') {
           sh 'sudo docker push brijkaur/votingresult:v1'
        } 
       }
