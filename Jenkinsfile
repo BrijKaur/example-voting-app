@@ -1,9 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'ubuntu-1604-aufs-stable'
-    }
-  }
+  agent any
   stages {
     stage('Build result') {
       steps {
@@ -51,4 +47,10 @@ pipeline {
       }
     }
   }
+emailext (
+    subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
+    body: """<p>Check console output at <a href="${env.BUILD_URL}">${env.JOB_NAME}</a></p>""",
+    to: "brajenderkaur@gmail.com",
+    from: "jenkins@jenkinsadmin.com"
+)
 }
