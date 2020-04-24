@@ -18,14 +18,14 @@ pipeline {
     }
     stage('Push result image') {
          steps {
-       withDockerRegistry(credentialsId: 'login', url: 'https://index.docker.io/') {
+       withDockerRegistry(credentialsId: 'login', url: "") {
           sh 'sudo docker push brijkaur/votingresult:v1'
        } 
       }
     }
     stage('Push vote image') {
          steps {
-       withDockerRegistry(credentialsId: 'login', url: 'https://index.docker.io/') {
+       withDockerRegistry(credentialsId: 'login', url: "") {
           sh 'sudo docker push brijkaur/votingvote:v1'
        } 
       }
