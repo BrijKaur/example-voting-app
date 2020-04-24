@@ -17,30 +17,21 @@ pipeline {
       }
     }
     stage('Push result image') {
-      when {
-        branch 'master'
-      }
-      steps {
+         steps {
         withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
           sh 'sudo docker push dockersamples/result'
         }
       }
     }
     stage('Push vote image') {
-      when {
-        branch 'master'
-      }
-      steps {
+         steps {
         withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
           sh 'sudo docker push dockersamples/vote'
         }
       }
     }
     stage('Push worker image') {
-      when {
-        branch 'master'
-      }
-      steps {
+         steps {
         withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
           sh 'sudo docker push dockersamples/worker'
         }
