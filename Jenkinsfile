@@ -18,21 +18,21 @@ pipeline {
     }
     stage('Push result image') {
          steps {
-       withDockerRegistry(credentialsId: 'login', url: 'https://hub.docker.com/') {
+       withDockerRegistry(credentialsId: 'login', url: 'index.docker.io') {
           sh 'sudo docker push dockersamples/result'
        } 
       }
     }
     stage('Push vote image') {
          steps {
-       withDockerRegistry(credentialsId: 'login', url: 'https://hub.docker.com/') {
+       withDockerRegistry(credentialsId: 'login', url: 'index.docker.io') {
           sh 'sudo docker push dockersamples/vote'
        } 
       }
     }
     stage('Push worker image') {
          steps {
-            withDockerRegistry(credentialsId: 'login', url: 'https://hub.docker.com/') {
+            withDockerRegistry(credentialsId: 'login', url: 'index.docker.io') {
           sh 'sudo docker push dockersamples/worker'
             }
         }      }
