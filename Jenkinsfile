@@ -18,21 +18,23 @@ pipeline {
     }
     stage('Push result image') {
          steps {
-       
+       withDockerRegistry(credentialsId: 'login') {
           sh 'sudo docker push dockersamples/result'
-        
+       } 
       }
     }
     stage('Push vote image') {
          steps {
-      
+       withDockerRegistry(credentialsId: 'login') {
           sh 'sudo docker push dockersamples/vote'
-        
+       } 
       }
     }
     stage('Push worker image') {
          steps {
+            withDockerRegistry(credentialsId: 'login') {
           sh 'sudo docker push dockersamples/worker'
+            }
         }      }
     }
   }
